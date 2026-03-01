@@ -39,16 +39,16 @@ jobs:
         run: python3 build_site.py
 
       - name: Encrypt index.html
+        env: 
+          STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
         run: |
           # Install staticrypt
           npm install -g staticrypt
           
-          # Encrypt the file. Password should be in repository secrets or passed here.
-          # User mentioned "1234561" as password.
-          # output file will be 'encrypted/index.html' by default or we can specify.
+          # Encrypt the file using the password from repository secrets.
           # We want the deployed index.html to be the encrypted one.
           
-          npx staticrypt index.html -p 1234561 -o index_encrypted.html
+          npx staticrypt index.html -p "$STATICRYPT_PASSWORD" -o index_encrypted.html
           
           # Replace original with encrypted
           mv index_encrypted.html index.html
