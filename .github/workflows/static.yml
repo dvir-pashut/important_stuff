@@ -40,7 +40,7 @@ jobs:
           # Encrypt the file using the password from repository secrets.
           # We want the deployed index.html to be the encrypted one.
           
-          npx staticrypt index.html -p "$STATICRYPT_PASSWORD" -o index_encrypted.html
+          npx staticrypt index.html -p "$STATICRYPT_PASSWORD" -o index_encrypted.html -y
           
           # Replace original with encrypted
           mv index_encrypted.html index.html
