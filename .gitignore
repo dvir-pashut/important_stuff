@@ -2,3 +2,6 @@ run_backup.sh
 build_site.py
 *recipes_backup*
 backup_recipes.py
+.staticrypt.json
+encrypted/
+test_dir/
